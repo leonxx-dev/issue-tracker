@@ -136,3 +136,6 @@ STATICFILES_DIRS = (
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+#Receiving password-reset email in the console.
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
