@@ -1,0 +1,7 @@
+#Ignore all .c9 specific files<br>
+/.c9/
+*.sqlite3
+*.pyc
+__pycache__/
+/virtenv/
+env.py
