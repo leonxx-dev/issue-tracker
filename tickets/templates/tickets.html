@@ -14,7 +14,7 @@
                         <p>{{ post.content|truncatewords:30 }}</p>
                         <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-default">Read more</a></p>
                         <p><span class="boldtext">Published on:</span> {{ ticket.published_date }} </p>
-                        <p><span class="boldtext">Updated on:</span> {{ ticket.updated_date }} </p>
+                        <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }} </p>
                         <p><span class="boldtext">Status:</span> {{ticket.status}}</p>
                     </div>
                 </div>

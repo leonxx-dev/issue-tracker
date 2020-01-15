@@ -23,7 +23,6 @@ def ticket_detail(request, pk):
     not found
     """
     ticket = get_object_or_404(Ticket, pk=pk)
-    ticket.save()
     return render(request, "ticketdetail.html", {'ticket': ticket})
 
 
