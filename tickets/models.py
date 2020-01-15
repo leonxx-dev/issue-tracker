@@ -20,16 +20,16 @@ class Ticket(models.Model):
     Single ticket
     """
     STATUS_OPTIONS = (
-        ('TD', 'To Do'),
-        ('IP', 'In Progress'),
-        ('D', 'Done'),
+        ('To Do', 'To Do'),
+        ('In Progress', 'In Progress'),
+        ('Done', 'Done'),
     )
     title = models.CharField(max_length=250)
     content = models.TextField()
     ticket_type = models.ForeignKey(TypeName, on_delete=models.CASCADE)
     published_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="To Do")
+    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="New")
 
     def __str__(self):
         return self.title
