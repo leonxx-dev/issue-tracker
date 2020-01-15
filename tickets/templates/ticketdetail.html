@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-10 col-md-9">
+            <h3>{{ Ticket.title }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ ticket.content }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ ticket.published_date }} </p>
+                    <p><span class="boldtext">Status:</span> {{ ticket.status }}</p>
+                    <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+                    <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-default">Edit Ticket</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
