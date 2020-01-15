@@ -7,7 +7,7 @@ from .forms import TicketForm
 def get_tickets(request):
     """
     Create a view that will return a list
-    of Posts that were published prior to 'now'
+    of Tickets that were published prior to 'now'
     and render them to the 'tickets.html' template
     """
     tickets = Ticket.objects.filter(published_date__lte=timezone.now()
@@ -17,7 +17,7 @@ def get_tickets(request):
 def ticket_detail(request, pk):
     """
     Create a view that returns a single
-    Post object based on the post ID (pk) and
+    Ticket object based on the post ID (pk) and
     render it to the 'ticketdetail.html' template.
     Or return a 404 error if the ticket is
     not found
@@ -30,7 +30,7 @@ def ticket_detail(request, pk):
 def create_or_edit_ticket(request, pk=None):
     """
     Create a view that allows us to create
-    or edit a post depending if the Post ID
+    or edit a ticket depending if the Ticket ID
     is null or not
     """
     ticket = get_object_or_404(Ticket, pk=pk) if pk else None

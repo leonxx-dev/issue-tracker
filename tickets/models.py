@@ -28,8 +28,8 @@ class Ticket(models.Model):
     content = models.TextField()
     ticket_type = models.ForeignKey(TypeName, on_delete=models.CASCADE)
     published_date = models.DateTimeField(auto_now_add=True)
-    update_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="TD")
+    update_date = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="To Do")
 
     def __str__(self):
         return self.title
