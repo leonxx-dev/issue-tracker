@@ -3,24 +3,33 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <p><a href="{% url 'new_ticket' %}"  class="btn btn-default">Create Ticket</a></p>
+                <h1>Tickets</h1>
+            </div>
+            <div class="col-sm-6">
+                <a href="{% url 'new_ticket' %}"  class="btn btn-default right">Create Ticket</a>
+            </div>
         </div>
     </div>    
     </div>
-    
     <div class="container">
         <div class="row">
             {% for ticket in tickets %}
-            <div class="col-md-4 col-sm-6">
-                <h3>{{ ticket.title }}</h3>
-                <p>{{ ticket.content|truncatewords:30 }}</p>
-                <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-default">Read more</a></p>
-                <p><span class="boldtext">Published on:</span> {{ ticket.published_date }} </p>
-                <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }} </p>
-                <p><span class="boldtext">Status:</span> {{ticket.status}}</p>
+            
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>{{ ticket.title }}</h3>
+                        <p><span class="boldtext">Status:</span> {{ticket.status}}</p> 
+                        <p>{{ ticket.content|truncatewords:30 }}</p>
+                        <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-primary">Read more</a></p>
+                        <div>
+                            <p><span class="boldtext">Published on:</span> {{ ticket.published_date }}</p>
+                            <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>    
     </div>    
-    
 {% endblock %}
