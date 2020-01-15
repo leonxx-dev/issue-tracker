@@ -18,3 +18,8 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+
+.button-centre-right {
+    margin-top: 2em;
+    float: right;
+}

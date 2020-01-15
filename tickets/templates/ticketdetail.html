@@ -10,8 +10,9 @@
                     <p><span class="boldtext">Published on:</span> {{ ticket.published_date }} </p>
                     <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }} </p>
                     <p><span class="boldtext">Status:</span> {{ ticket.status }}</p>
+                    <p><span class="boldtext">Type:</span> {{ticket.ticket_type}}</p> 
+                    <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
                     <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
-                    <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-default">Edit Ticket</a>
                     <hr>
                 </div>
             </div>

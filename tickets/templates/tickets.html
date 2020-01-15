@@ -6,7 +6,7 @@
                 <h1>Tickets</h1>
             </div>
             <div class="col-sm-6">
-                <a href="{% url 'new_ticket' %}"  class="btn btn-default right">Create Ticket</a>
+                <a href="{% url 'new_ticket' %}"  class="btn btn-success button-centre-right">Create Ticket</a>
             </div>
         </div>
     </div>    
@@ -14,17 +14,17 @@
     <div class="container">
         <div class="row">
             {% for ticket in tickets %}
-            
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>{{ ticket.title }}</h3>
-                        <p><span class="boldtext">Status:</span> {{ticket.status}}</p> 
+                        <p><span class="boldtext">Status:</span> {{ticket.status}}</p>
+                        <p><span class="boldtext">Type:</span> {{ticket.ticket_type}}</p> 
                         <p>{{ ticket.content|truncatewords:30 }}</p>
                         <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-primary">Read more</a></p>
                         <div>
-                            <p><span class="boldtext">Published on:</span> {{ ticket.published_date }}</p>
-                            <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</p>
+                            <p><small><span class="boldtext">Published on:</span> {{ ticket.published_date }}</small></p>
+                            <p><small><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</small></p>
                         </div>
                     </div>
                 </div>
