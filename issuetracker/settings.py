@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['d8911aa976944ed082c8a43917f53438.vfs.cloud9.us-east-1.amazonaw
 INSTALLED_APPS = [
     'home',
     'accounts',
+    'tickets',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
-    'tickets.apps.TicketsConfig',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +72,7 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.MyUser'
 
 WSGI_APPLICATION = 'issuetracker.wsgi.application'
 

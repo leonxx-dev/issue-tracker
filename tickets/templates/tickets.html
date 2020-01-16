@@ -23,7 +23,7 @@
                         <p>{{ ticket.content|truncatewords:12 }}</p>
                         <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-primary">Read more</a></p>
                         <div>
-                            <p><small><span class="boldtext">Author:</span> {{ ticket.author.username }}</small></p>
+                            <p><small><span class="boldtext">Author:</span> {{ ticket.author }}</small></p>
                             <p><small><span class="boldtext">Published on:</span> {{ ticket.published_date }}</small></p>
                             <p><small><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</small></p>
                         </div>

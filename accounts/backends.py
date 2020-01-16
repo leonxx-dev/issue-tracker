@@ -1,6 +1,8 @@
-from django.contrib.auth.models import User
+from .models import MyUser
+from django.contrib.auth import get_user_model
 from django.db.models import Q
 
+MyUser = get_user_model()
 
 class CaseInsensitiveAuth:
     """
@@ -19,7 +21,7 @@ class CaseInsensitiveAuth:
         or email (case insensitive) and verify the password
         """
         # Filter all users by searching for a match by username/ email.
-        users = User.objects.filter(Q(username__iexact=username_or_email) |
+        users = MyUser.objects.filter(Q(username__iexact=username_or_email) |
                                     Q(email__iexact=username_or_email))
         if not users:
             return None
@@ -37,9 +39,9 @@ class CaseInsensitiveAuth:
         Used by the Django authentication system to retrieve a User instance
         """
         try:
-            user = User.objects.get(pk=user_id)
+            user = MyUser.objects.get(pk=user_id)
             if user.is_active:
                 return user
             return None
-        except User.DoesNotExist:
+        except MyUser.DoesNotExist:
             return None
