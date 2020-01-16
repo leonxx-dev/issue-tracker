@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from django.utils import timezone
 
 
@@ -31,7 +30,7 @@ class Ticket(models.Model):
     ticket_type = models.ForeignKey(TypeName, on_delete=models.CASCADE)
     published_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
+    auth
     status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="New")
 
     def __str__(self):
