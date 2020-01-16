@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['d8911aa976944ed082c8a43917f53438.vfs.cloud9.us-east-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
-    'accounts.apps.AccountsConfig',
+    'home',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 WSGI_APPLICATION = 'issuetracker.wsgi.application'
 
