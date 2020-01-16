@@ -6,6 +6,7 @@
         <p><span class="boldtext">Status:</span> {{ ticket.status }}</p>
         <p><span class="boldtext">Type:</span> {{ticket.ticket_type}}</p> 
         <p>{{ ticket.content }}</p>
+        <p><small><span class="boldtext">Author:</span> {{ ticket.author }}</small></p>
         <p><span class="boldtext">Published on:</span> {{ ticket.published_date }} </p>
         <p><span class="boldtext">Updated on:</span> {{ ticket.update_date }} </p>
         <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
