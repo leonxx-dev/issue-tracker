@@ -54,6 +54,21 @@
         <div class="container">
             <p>Made by Code Institute bootcampers</p>
         </div>
-    </footer>
+<script>
+$(document).ready(function(){
+    var status = $("#status-color").first().text();
+    var label = document.getElementById("status-color");
+    console.log(status);
+    if (status == "New"){
+        label.classList.add("label", "label-success");
+    }else if (status == "To Do"){
+        label.classList.add("label", "label-info");
+    }else if (status == "In Progress"){
+        label.classList.add("label", "label-warning");
+    }else{
+        label.classList.add("label", "label-default");
+    }
+});
+</script>
 </body>
 </html>

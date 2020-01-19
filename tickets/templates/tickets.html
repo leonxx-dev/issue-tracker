@@ -18,8 +18,8 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>{{ ticket.title }}</h3>
-                        <p><span class="boldtext">Status:</span> {{ticket.status}}</p>
-                        <p><span class="boldtext">Type:</span> {{ticket.ticket_type}}</p> 
+                        <p><span class="boldtext">Status:</span> <span id="status-color">{{ticket.status}}</span></p>
+                        <p><span class="boldtext">Type:</span> {{ticket.ticket_type}}</p>
                         <p>{{ ticket.content|truncatewords:12 }}</p>
                         <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-primary">Read more</a></p>
                         <div>
