@@ -17,13 +17,15 @@ def get_tickets(request):
 def ticket_detail(request, pk):
     """
     Create a view that returns a single
-    Ticket object based on the post ID (pk) and
-    render it to the 'ticketdetail.html' template.
+    Ticket object based on the post ID (pk) or if Type="Issue" and
+    render it to the 'ticketdetail.html' template. If Type="Feature"
+    render it to the 'ticketpayment.html'.
     Or return a 404 error if the ticket is
     not found
     """
     ticket = get_object_or_404(Ticket, pk=pk)
     return render(request, "ticketdetail.html", {'ticket': ticket})
+    
 
 
 def create_or_edit_ticket(request, pk=None):
@@ -39,7 +41,7 @@ def create_or_edit_ticket(request, pk=None):
             ticket = form.save(commit=False)
             ticket.author = request.user
             ticket.save()
-            return redirect(ticket_detail, ticket.pk)
+            return redirect(ticket_detail, pk=pk)
     else:
         form = TicketForm(instance=ticket)
     return render(request, 'ticketform.html', {'form': form})

@@ -56,12 +56,12 @@
         </div>
     </footer>
     <script>
+        // Adding label to ticket status depend on status
         $(document).ready(function(){
             var getLabel = document.getElementsByClassName("status-color");
             for (var i = 0; i < getLabel.length; i++) {
                 var status = $(getLabel[i]).first().text();
                 var label = getLabel[i];
-                console.log(status);
                 if (status == "New"){
                     label.classList.add("label", "label-success");
                 }else if (status == "To Do"){
@@ -73,12 +73,12 @@
                 }
             }
         });
+        // Adding label to ticket type depend on type
         $(document).ready(function(){
             var getLabel = document.getElementsByClassName("type-color");
             for (var i = 0; i < getLabel.length; i++) {
                 var type = $(getLabel[i]).first().text();
                 var label = getLabel[i];
-                console.log(type);
                 if (type == "Issue"){
                     label.classList.add("label", "label-info");
                 }else{

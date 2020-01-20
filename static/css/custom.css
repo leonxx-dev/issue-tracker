@@ -23,9 +23,3 @@ footer {
     margin-top: 1.5em;
     float: right;
 }
-
-@media only screen and (min-width: 768px){
-    .button-centre-right {
-        margin-right: 1em;
-    }    
-}
