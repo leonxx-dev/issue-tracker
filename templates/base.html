@@ -65,11 +65,24 @@
                 if (status == "New"){
                     label.classList.add("label", "label-success");
                 }else if (status == "To Do"){
-                    label.classList.add("label", "label-info");
+                    label.classList.add("label", "label-primary");
                 }else if (status == "In Progress"){
                     label.classList.add("label", "label-warning");
                 }else{
                     label.classList.add("label", "label-default");
+                }
+            }
+        });
+        $(document).ready(function(){
+            var getLabel = document.getElementsByClassName("type-color");
+            for (var i = 0; i < getLabel.length; i++) {
+                var type = $(getLabel[i]).first().text();
+                var label = getLabel[i];
+                console.log(type);
+                if (type == "Issue"){
+                    label.classList.add("label", "label-info");
+                }else{
+                    label.classList.add("label", "label-danger");
                 }
             }
         });
