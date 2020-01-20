@@ -21,12 +21,16 @@
                             <span class="type-color">{{ticket.ticket_type}}</span>
                             <span class="status-color">{{ticket.status}}</span>
                         </h3>
+                        <p><span class="boldtext">Author:</span> {{ ticket.author }}</p>
                         <p>{{ ticket.content|truncatewords:12 }}</p>
-                        <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-primary">Read more</a></p>
-                        <div>
-                            <p><small><span class="boldtext">Author:</span> {{ ticket.author }}</small></p>
-                            <p><small><span class="boldtext">Published on:</span> {{ ticket.published_date }}</small></p>
-                            <p><small><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</small></p>
+                        <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-default">Read more</a></p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-7">
+                                <p><small><span class="boldtext">Updated on:</span> {{ ticket.update_date }}</small></p>    
+                            </div>
+                            <div class="col-xs-12 col-md-5">
+                                <p><small><span class="boldtext">Published on:</span> {{ ticket.published_date }}</small></p>    
+                            </div>
                         </div>
                     </div>
                 </div>
