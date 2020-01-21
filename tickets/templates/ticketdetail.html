@@ -28,6 +28,10 @@
                     <div class="col-xs-12 col-md-5">
                         <p><span class="boldtext">Published on:</span> {{ ticket.published_date }}</p>    
                     </div>
+                    <form action="{% url 'vote' ticket.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Vote">
+                    </form>
                 </div>
             </div>
         </div> 

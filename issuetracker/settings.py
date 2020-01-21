@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'tickets',
+    'vote',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
