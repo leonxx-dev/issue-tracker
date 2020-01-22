@@ -11,14 +11,18 @@ def request_vote(request, pk):
     """
     ticket_request = get_object_or_404(Ticket, pk=pk)
     if request.method == 'POST':
-        if Vote.objects.filter(voter=request.user, vote_for=ticket_request).exists():
-            messages.error(request, 'You already voted for this request.')
-            return redirect('ticket_detail', pk=ticket_request.pk)
+        if str(ticket_request.ticket_type) == "Issue":
+            if Vote.objects.filter(voter=request.user, vote_for=ticket_request).exists():
+                messages.error(request, 'You already voted for this request.')
+                return redirect('ticket_detail', pk=ticket_request.pk)
+            else:
+                ticket_request.votes += 1
+                ticket_request.save()
+                Vote.objects.get_or_create(voter=request.user, vote_for=ticket_request)
+                messages.success(request, 'You have successfully Provided an Up-Vote for this Request')
+                return redirect('ticket_detail', pk=ticket_request.pk)
         else:
-            ticket_request.votes += 1
-            ticket_request.save()
-            Vote.objects.get_or_create(voter=request.user, vote_for=ticket_request)
-            messages.success(request, 'You have successfully Provided an Up-Vote for this Request')
+            messages.success(request, 'You have to pay')
             return redirect('ticket_detail', pk=ticket_request.pk)
     else:
         messages.error(request, 'Uuups, something went wrong, please try again.')
