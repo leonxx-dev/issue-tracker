@@ -11,6 +11,9 @@ def request_vote(request, pk):
     """
     ticket_request = get_object_or_404(Ticket, pk=pk)
     if request.method == 'POST':
+        """
+        If ticket_type = Issue proceed as normal. Else will redirect to payment.
+        """
         if str(ticket_request.ticket_type) == "Issue":
             if Vote.objects.filter(voter=request.user, vote_for=ticket_request).exists():
                 messages.error(request, 'You already voted for this request.')
