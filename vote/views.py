@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Vote
 from tickets.models import Ticket
-from tickets.urls import ticket_detail
+from tickets.urls import ticket_detail, ticket_prepayment
 
 def request_vote(request, pk):
     """
@@ -26,7 +26,7 @@ def request_vote(request, pk):
                 return redirect('ticket_detail', pk=ticket_request.pk)
         else:
             messages.success(request, 'You have to pay')
-            return redirect('ticket_detail', pk=ticket_request.pk)
+            return redirect('ticket_prepayment', pk=ticket_request.pk)
     else:
         messages.error(request, 'Uuups, something went wrong, please try again.')
         return redirect('ticket_detail', pk=ticket_request.pk)

@@ -18,6 +18,7 @@ from django.urls import path, include
 from accounts import urls as urls_accounts
 from tickets import urls as urls_tickets
 from vote import urls as urls_vote
+from cart import urls as urls_cart
 from home.views import index
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path('accounts/', include(urls_accounts)),
     path('tickets/', include(urls_tickets)),
     path('votes/', include(urls_vote)),
+    path('cart/', include(urls_cart)),
 ]

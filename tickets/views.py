@@ -26,6 +26,17 @@ def ticket_detail(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     return render(request, "ticketdetail.html", {'ticket': ticket})
     
+def ticket_prepayment(request, pk):
+    """
+    Create a view that returns a single
+    Ticket object based on the post ID (pk) 
+    render it to the 'cart.html'.
+    Or return a 404 error if the ticket is
+    not found
+    """
+    ticket = get_object_or_404(Ticket, pk=pk)
+    return render(request, "prepayment.html", {'ticket': ticket})
+    
 
 
 def create_or_edit_ticket(request, pk=None):
