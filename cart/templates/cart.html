@@ -14,6 +14,6 @@
 <div class="row">
     <p>Total</p>
     <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a href="/" class="btn btn-success" role="button"><span aria-hidden="true"></span>Checkout</a>
+    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span aria-hidden="true"></span>Checkout</a>
 </div>
 {% endblock %}
