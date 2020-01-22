@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import results, vote
+from .views import results, request_vote
 
 urlpatterns = [
-    path('<int:ticket_id>/results/', results, name='results'),
-    path('<int:ticket_id>/vote/', vote, name='vote'),
+    path('<int:pk>/results/', results, name='results'),
+    path('<int:pk>/vote/', request_vote, name='vote'),
 ]
