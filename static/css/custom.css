@@ -23,3 +23,7 @@ footer {
     margin-top: 1.5em;
     float: right;
 }
+
+.vertical-center {
+    margin: 0;
+}
