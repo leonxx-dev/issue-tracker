@@ -12,5 +12,6 @@ class Vote(models.Model):
         unique_together = ('vote_for', 'voter')
     
     def __str__(self):
-        return self.published_date
+        return "{0}-{1}".format(
+            self.id, self.voter.username)
 
