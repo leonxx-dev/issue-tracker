@@ -8,6 +8,7 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     """Add a amount for the upvote to the cart"""
+    request.session['cart'] = {}
     amount = int(request.POST.get('amount'))
 
     cart = request.session.get('cart', {})
