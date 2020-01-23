@@ -19,11 +19,28 @@ footer {
     padding-top: 20px;
 }
 
+/*ticket pages*/
 .button-centre-right {
     margin-top: 1.5em;
     float: right;
 }
 
-.vertical-center {
+.dates-vertical-center {
     margin: 0;
+}
+
+.ticket-title {
+    margin: 0;
+}
+
+.break-line {
+    margin:0.5em;
+}
+
+.thumbnail {
+    padding: 0.4em 0.4em 0 0.4em;
+}
+
+.thumbnail .caption {
+    padding: 0.9em 0.9em 0 0.9em;
 }

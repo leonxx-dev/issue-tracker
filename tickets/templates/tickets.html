@@ -18,17 +18,18 @@
                 <div class="caption">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h3>{{ ticket.title }}</h3>    
+                            <h3 class="ticket-title">{{ ticket.title }}</h3>    
                         </div>
+                        <hr class="break-line">
                         <div class="col-xs-12">
                             <span class="type-color">{{ticket.ticket_type}}</span>
                             <span class="status-color">{{ticket.status}}</span>    
                         </div>
                     </div>
-                    <hr>
+                    <hr class="break-line">
                     <p>{{ ticket.content|truncatewords:30 }}</p>
                     <p><a href="{% url 'ticket_detail' ticket.id %}"  class="btn btn-default">Read more</a></p>
-                    <hr>
+                    <hr class="break-line">
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="text-center"><small><strong>Updated on:</strong> {{ ticket.update_date }}</small></p>    
