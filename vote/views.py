@@ -9,27 +9,27 @@ def request_vote(request, pk):
     """
     View that allowed users make upvotes for tickets. One user can upvote once.
     """
-    ticket_request = get_object_or_404(Ticket, pk=pk)
+    ticket = get_object_or_404(Ticket, pk=pk)
     if request.method == 'POST':
         """
         If ticket_type = Issue proceed as normal. Else will redirect to payment.
         """
-        if str(ticket_request.ticket_type) == "Issue":
-            if Vote.objects.filter(voter=request.user, vote_for=ticket_request).exists():
+        if str(ticket.ticket_type) == "Issue":
+            if Vote.objects.filter(voter=request.user, vote_for=ticket).exists():
                 messages.error(request, 'You already voted for this request.')
-                return redirect('ticket_detail', pk=ticket_request.pk)
+                return redirect('ticket_detail', pk=ticket.pk)
             else:
-                ticket_request.votes += 1
-                ticket_request.save()
-                Vote.objects.get_or_create(voter=request.user, vote_for=ticket_request)
+                ticket.votes += 1
+                ticket.save()
+                Vote.objects.get_or_create(voter=request.user, vote_for=ticket)
                 messages.success(request, 'You have successfully Provided an Up-Vote for this Request')
-                return redirect('ticket_detail', pk=ticket_request.pk)
+                return redirect('ticket_detail', pk=ticket.pk)
         else:
             messages.success(request, 'You have to pay')
-            return redirect('ticket_prepayment', pk=ticket_request.pk)
+            return redirect('ticket_prepayment', pk=ticket.pk)
     else:
         messages.error(request, 'Uuups, something went wrong, please try again.')
-        return redirect('ticket_detail', pk=ticket_request.pk)
+        return redirect('ticket_detail', pk=ticket.pk)
     
 
 def results(request, ticket_id):
