@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2">
+            <h1>Ticket Detail</h1>
+        </div>
+    </div>
+</div>   
+<div class="row ticket-detail">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="thumbnail">
+            <div class="caption">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>{{ ticket.title }}</h3>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class="vertical-center"><strong>Author:</strong> {{ ticket.author }}</p>
+                    </div> 
+                    <div class="col-xs-6">
+                        <p class="text-right vertical-center">
+                            <span class="type-color">{{ticket.ticket_type}}</span>
+                            <span class="status-color">{{ticket.status}}</span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <p>{{ ticket.content }}</p>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-2 col-md-1">
+                        <form action="{% url 'request_vote' ticket.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Vote">
+                        </form>
+                    </div>
+                    <div class="col-xs-10 col-md-1">
+                        <p>{{ ticket.amount }}</p>    
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <p><small><strong>Updated on:</strong> {{ ticket.update_date }}</small></p>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <p><small><strong>Published on:</strong> {{ ticket.published_date }}</small></p>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div>
+            <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
+            <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+        </div>
+    </div>
+</div>
+{% endblock %}
