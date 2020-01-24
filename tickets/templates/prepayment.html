@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 display panel panel-default">
+        <div class="panel-body">
+            <h3>{{ ticket.title }}</h3>
+            <p>
+                To upvote features you need to pay min. amount 10 eur. 
+                Insert amout that you able to pay below
+            </p>
+            <form method="post" action="{% url 'add_to_cart' ticket.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="amount" type="number" min="10" max="1000" class="form-control" placeholder="Amount">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">Add</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

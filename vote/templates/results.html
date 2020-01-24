@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ tickets.ticket.title }}</h1>
+    {{ tickets.votes }} vote{{ tickets.votes|pluralize }}
+<a href="{% url 'ticket_detail' ticket.id %}">Vote again?</a>
+{% endblock %}

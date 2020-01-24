@@ -19,13 +19,46 @@ footer {
     padding-top: 20px;
 }
 
+/*ticket pages*/
 .button-centre-right {
     margin-top: 1.5em;
     float: right;
 }
 
-@media only screen and (min-width: 768px){
-    .button-centre-right {
-        margin-right: 1em;
-    }    
+.dates-vertical-center {
+    margin: 0;
 }
+
+.ticket-title {
+    margin: 0;
+}
+
+.break-line {
+    margin:0.5em;
+}
+
+.thumbnail {
+    padding: 0.4em 0.4em 0 0.4em;
+}
+
+.thumbnail .caption {
+    padding: 0.9em 0.9em 0 0.9em;
+}
+
+@media only screen and (min-width: 992px) {
+    .filter-button {
+        margin-top: 1.8em;
+    }
+    .form-buttons {
+        margin-left: 15em;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .filter-button {
+        margin: 0em 0em 1em 1em;
+    }
+}
+
+
+

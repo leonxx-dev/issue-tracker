@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages, auth
-from django.contrib.auth import get_user_model, login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.urls import reverse
 from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-
-MyUser = get_user_model()
 
 # Create your views here.
 def index(request):

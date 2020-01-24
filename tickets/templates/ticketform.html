@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>Create/Edit Ticket</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
-        <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>Ticket Form</h1> 
+            <hr class="break-line">
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | as_bootstrap }}
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-2 form-buttons">
+                    <button type="submit" class="btn btn-info">Save</button>
+                    <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+                </div>
+            </div>
+        </form>           
+    </div>
+</div>
+
 {% endblock %}

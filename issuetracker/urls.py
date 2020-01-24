@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts import urls as urls_accounts
 from tickets import urls as urls_tickets
+from vote import urls as urls_vote
+from cart import urls as urls_cart
+from checkout import urls as urls_checkout
 from home.views import index
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('accounts/', include(urls_accounts)),
-    path('tickets/', include(urls_tickets))
+    path('tickets/', include(urls_tickets)),
+    path('votes/', include(urls_vote)),
+    path('cart/', include(urls_cart)),
+    path('checkout/', include(urls_checkout)),
 ]
