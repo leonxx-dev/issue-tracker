@@ -94,6 +94,12 @@
             $('select[id=id_ticket_type] > option:first-child')
             .text("All");
         });
+        $(document).ready(function(){
+            var type = document.getElementById("div_id_ticket_type");
+            var date = document.getElementById("div_id_published");
+            $(type).addClass("col-xs-6 col-md-2 col-md-offset-2");
+            $(date).addClass("col-xs-6 col-md-2")
+        });
     </script>
 </body>
 </html>

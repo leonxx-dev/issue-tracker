@@ -45,6 +45,16 @@ footer {
     padding: 0.9em 0.9em 0 0.9em;
 }
 
-#id_ticket_type:focus option:first-of-type {
-    display: none;
+@media only screen and (min-width: 992px) {
+    .filter-button {
+        margin-top: 1.8em;
+    }
 }
+
+@media only screen and (max-width: 991px) {
+    .filter-button {
+        margin: 0em 0em 1em 1em;
+    }
+}
+
+
