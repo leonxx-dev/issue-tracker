@@ -89,6 +89,11 @@
                 }
             }
         });
+        // Adding name to default option in bootstrap form fro ticket_type filter
+        $(document).ready(function(){
+            $('select[id=id_ticket_type] > option:first-child')
+            .text("All");
+        });
     </script>
 </body>
 </html>

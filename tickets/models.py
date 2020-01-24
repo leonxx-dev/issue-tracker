@@ -7,9 +7,12 @@ class TypeName(models.Model):
     """
     Tycket type options will be used as foreign key for ticket
     """
+    ISSUE = 'ISSUE'
+    FEATURE = 'FEATURE'
+    
     TYPE_OPTIONS = (
-        ('Issue', 'Issue'),
-        ('Feature', 'Feature'),
+        ('ISSUE', 'Issue'),
+        ('FEATURE', 'Feature'),
     )
     name = models.CharField(max_length=20, choices=TYPE_OPTIONS)
     
