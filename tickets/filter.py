@@ -13,7 +13,7 @@ class TicketFilter(django_filters.FilterSet):
     
     class Meta:
         model = Ticket
-        fields = ['ticket_type', 'published']
+        fields = ['ticket_type__name', 'published']
         
     def order_by_date(self, queryset, published_date, value):
         expression = 'published_date' if value == 'oldest' else '-published_date'  
