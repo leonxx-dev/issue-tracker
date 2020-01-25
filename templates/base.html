@@ -93,17 +93,17 @@
         $(document).ready(function(){
             $("select[id=id_ticket_type] > option:first-child")
             .remove();
-            $("select[id=id_published] > option:first-child")
-            .remove();
         });
         //Adding classes to bootstrap forms
         $(document).ready(function(){
             var type = document.getElementById("div_id_ticket_type");
+            var type_name = document.getElementById("div_id_ticket_type__name");
             var date = document.getElementById("div_id_published");
             var title = document.getElementById("div_id_title");
             var content = document.getElementById("div_id_content");
             var upvotes = document.getElementById("div_id_upvotes");
             var title_contains = document.getElementById("div_id_title_contains");
+            $(type_name).addClass("col-xs-6 col-md-2 col-md-offset-2");
             $(type).addClass("col-xs-6 col-md-2 col-md-offset-2");
             $(date).addClass("col-xs-6 col-md-2");
             $(upvotes).addClass("col-xs-6 col-md-2");
