@@ -11,10 +11,10 @@ def get_tickets(request):
     of Tickets that were published prior to 'now'
     and render them to the 'tickets.html' template
     """
-    
+    tickets = Ticket.objects.filter(ticket_type='1')
     f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date'))
         
-    return render(request, "tickets.html", {'filter': f})
+    return render(request, "tickets.html", {'tickets': tickets, 'filter': f})
     
 def ticket_detail(request, pk):
     """
