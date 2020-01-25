@@ -89,11 +89,14 @@
                 }
             }
         });
-        // Adding name to default option in bootstrap form fro ticket_type filter
+        // Removing default options from dropdown menus of ticket_type and published_date
         $(document).ready(function(){
             $('select[id=id_ticket_type] > option:first-child')
-            .text("All");
+            .remove();
+            $('select[id=id_published] > option:first-child')
+            .remove();
         });
+        //Adding classes to bootstrap forms
         $(document).ready(function(){
             var type = document.getElementById("div_id_ticket_type");
             var date = document.getElementById("div_id_published");
