@@ -13,7 +13,9 @@
     <div class="row">
         <form action="" method="get">
             {{ filter.form | as_bootstrap }}
-            <button type="submit" class="btn btn-default filter-button">Filter</button>
+            <div class="col-xs-6 col-md-2">
+                <button type="submit" class="btn btn-default filter-button btn-block">Filter</button>    
+            </div>
         </form>    
     </div>
 </div>    
@@ -30,7 +32,8 @@
                         <hr class="break-line">
                         <div class="col-xs-12">
                             <span class="type-color">{{ticket.ticket_type}}</span>
-                            <span class="status-color">{{ticket.status}}</span>    
+                            <span class="status-color">{{ticket.status}}</span>
+                            <span><strong>Votes:</strong> {{ ticket.votes }}</span>
                         </div>
                     </div>
                     <hr class="break-line">

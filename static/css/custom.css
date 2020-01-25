@@ -47,7 +47,7 @@ footer {
 
 @media only screen and (min-width: 992px) {
     .filter-button {
-        margin-top: 1.8em;
+        margin-top: 1.7em;
     }
     .form-buttons {
         margin-left: 15em;
@@ -56,7 +56,10 @@ footer {
 
 @media only screen and (max-width: 991px) {
     .filter-button {
-        margin: 0em 0em 1em 1em;
+        margin-top: 1.7em;;
+    }
+    .form-buttons {
+        margin-left: 1.1em;
     }
 }
 

@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class TypeName(models.Model):
     """
-    Tycket type options will be used as foreign key for ticket
+    Ticket type options will be used as foreign key for ticket
     """
     
     TYPE_OPTIONS = (
