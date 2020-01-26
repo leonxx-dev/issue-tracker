@@ -65,14 +65,12 @@
             for (var i = 0; i < getLabel.length; i++) {
                 var status = $(getLabel[i]).first().text();
                 var label = getLabel[i];
-                if (status == "New"){
-                    label.classList.add("label", "label-success");
-                }else if (status == "To Do"){
-                    label.classList.add("label", "label-primary");
+                if (status == "Pending"){
+                    label.classList.add("label", "label-default");
                 }else if (status == "In Progress"){
                     label.classList.add("label", "label-warning");
                 }else{
-                    label.classList.add("label", "label-default");
+                    label.classList.add("label", "label-primary");
                 }
             }
         });

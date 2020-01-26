@@ -22,7 +22,7 @@ class Ticket(models.Model):
     Single ticket
     """
     STATUS_OPTIONS = (
-        ('To Do', 'To Do'),
+        ('Pending', 'Pending'),
         ('In Progress', 'In Progress'),
         ('Done', 'Done'),
     )
@@ -32,7 +32,7 @@ class Ticket(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="New")
+    status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="Pending")
     votes = models.IntegerField(default=0)
     amount = models.IntegerField(default=0)
 
