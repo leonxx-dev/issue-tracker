@@ -7,6 +7,8 @@
             <h1>Ticket Form</h1> 
             <hr class="break-line">
         </div>
+    </div>
+    <div class="row">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | as_bootstrap }}
@@ -16,7 +18,7 @@
                     <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
                 </div>
             </div>
-        </form>           
+        </form>      
     </div>
 </div>
 
