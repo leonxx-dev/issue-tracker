@@ -56,4 +56,4 @@ def create_or_edit_ticket(request, pk=None):
             return redirect(ticket_detail, ticket.pk)
     else:
         form = TicketForm(instance=ticket)
-    return render(request, 'ticketform.html', {'form': form})
+    return render(request, 'ticketform.html', {'form': form, 'ticket': ticket})

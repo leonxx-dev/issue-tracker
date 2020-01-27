@@ -9,16 +9,22 @@
         </div>
     </div>
     <div class="row">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form | as_bootstrap }}
-            <div class="row">
-                <div class="col-xs-12 col-md-10 col-md-offset-2 form-buttons">
-                    <button type="submit" class="btn btn-info">Save</button>
-                    <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+        {% if ticket.author != request.user %}
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <p>Sorry. You cannot edit other users tickets.</p>
+        </div>
+        {% else %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 col-md-offset-2 form-buttons">
+                        <button type="submit" class="btn btn-info">Save</button>
+                        <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+                    </div>
                 </div>
-            </div>
-        </form>      
+            </form>  
+        {% endif %}
     </div>
 </div>
 
