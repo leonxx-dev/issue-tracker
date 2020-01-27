@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Ticket
 from .forms import TicketForm
 from .filter import TicketFilter
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def get_tickets(request):
@@ -38,8 +39,7 @@ def ticket_prepayment(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     return render(request, "prepayment.html", {'ticket': ticket})
     
-
-
+@login_required()
 def create_or_edit_ticket(request, pk=None):
     """
     Create a view that allows us to create
