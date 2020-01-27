@@ -51,8 +51,12 @@
             </div>
         </div> 
         <div>
-            <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
-            <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+            {% if ticket.author != request.user %}
+                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+            {% else%}
+                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
+                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+            {% endif %}
         </div>
     </div>
 </div>
