@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        {% if ticket.author == request.user.username %}
+        {% if ticket.author == null %}
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | as_bootstrap }}
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </form>
-        {% elif ticket.author != request.user.username %}
+        {% elif ticket.author != request.user %}
         <div class="col-xs-12 col-md-8 col-md-offset-2">
             <p>Sorry. You cannot edit other user tickets.</p>    
         </div>
