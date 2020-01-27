@@ -51,12 +51,9 @@ def create_or_edit_ticket(request, pk=None):
         form = TicketForm(request.POST, instance=ticket)
         if form.is_valid():
             ticket = form.save(commit=False)
-            if Ticket.objects.filter(author=request.user).exists():
-                return redirect(ticket_detail, ticket.pk)
-            else:
-                ticket.author = request.user
-                ticket.save()
-                return redirect(ticket_detail, ticket.pk)
+            ticket.author = request.user
+            ticket.save()
+            return redirect(ticket_detail, ticket.pk)
     else:
         form = TicketForm(instance=ticket)
     return render(request, 'ticketform.html', {'form': form})
