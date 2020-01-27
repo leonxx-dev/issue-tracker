@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ticket, TypeName
+from .models import Ticket
 
 class TicketForm(forms.ModelForm):
     
