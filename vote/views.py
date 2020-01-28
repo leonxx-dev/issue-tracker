@@ -4,7 +4,9 @@ from django.contrib import messages
 from .models import Vote
 from tickets.models import Ticket
 from tickets.urls import ticket_detail, ticket_prepayment
+from django.contrib.auth.decorators import login_required
 
+@login_required()
 def request_vote(request, pk):
     """
     View that allowed users make upvotes for tickets. One user can upvote once.
