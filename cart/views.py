@@ -8,7 +8,6 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     """Add a amount for the upvote to the cart"""
-    request.session['cart'] = {}
     amount = int(request.POST.get('amount'))
 
     cart = request.session.get('cart', {})
@@ -19,3 +18,20 @@ def add_to_cart(request, id):
 
     request.session['cart'] = cart
     return redirect(reverse('checkout'))
+    
+def adjust_cart(request, id):
+    """
+    Adjust the quantity of the specified product to the specified
+    amount
+    """
+    print(request.POST)
+    amount = int(request.POST.get('amount'))
+    cart = request.session.get('cart', {})
+
+    if amount > 0:
+        cart[id] = amount
+    else:
+        cart.pop(id)
+    
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))

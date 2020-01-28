@@ -1,7 +1,8 @@
-from django.conf.urls import url
-from .views import view_cart, add_to_cart
+from django.urls import path, re_path
+from .views import view_cart, add_to_cart, adjust_cart
 
 urlpatterns = [
-    url(r'^$', view_cart, name='view_cart'),
-    url(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),
+    path('', view_cart, name='view_cart'),
+    re_path(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),
+    re_path(r'^adjust/(?P<id>\d+)', adjust_cart, name='adjust_cart'),
 ]
