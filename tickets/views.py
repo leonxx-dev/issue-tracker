@@ -52,9 +52,16 @@ def create_or_edit_ticket(request, pk=None):
         form = TicketForm(request.POST, instance=ticket)
         if form.is_valid():
             ticket = form.save(commit=False)
-            ticket.author = request.user
-            ticket.save()
-            return redirect(ticket_detail, ticket.pk)
+            if str(ticket.ticket_type) == "Issue":
+                ticket.author = request.user
+                ticket.save()
+                return redirect(ticket_detail, ticket.pk)
+            else:
+                ticket.author = request.user
+                ticket.payment_status = 'Not Paid'
+                ticket.save()
+                messages.success(request, 'You have to pay')
+                return redirect('ticket_prepayment', pk=ticket.pk)
     else:
         form = TicketForm(instance=ticket)
     return render(request, 'ticketform.html', {'form': form, 'ticket': ticket})

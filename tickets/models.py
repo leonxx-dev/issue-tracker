@@ -26,6 +26,12 @@ class Ticket(models.Model):
         ('In Progress', 'In Progress'),
         ('Done', 'Done'),
     )
+    
+    PAYMENT_OPTIONS = (
+        ('Paid', 'Paid'),
+        ('Not Paid', 'Not Paid')
+    )
+    
     title = models.CharField(max_length=250)
     content = models.TextField()
     ticket_type = models.ForeignKey(TypeName, on_delete=models.CASCADE)
@@ -35,6 +41,7 @@ class Ticket(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_OPTIONS, default="Pending")
     votes = models.IntegerField(default=0)
     amount = models.IntegerField(default=0)
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_OPTIONS, blank=True)
 
     def __str__(self):
         return self.title
