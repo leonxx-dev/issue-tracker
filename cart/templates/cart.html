@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <h3>Cart</h3>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h3>Cart</h3>    
+    </div>
     {% for item in cart_items %}
     <div class="col-xs-12 col-md-8 col-md-offset-2 display panel panel-display">
         <div class="caption">
@@ -12,10 +14,10 @@
             <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                    <label for="exampleInputAmount" class="sr-only">New Amount</label>
                     <div class="input-group">
-                        <div class="input-group-addon">Qty</div>
-                        <input name="amount" type="number" min="0" max="999" class="form-control">
+                        <div class="input-group-addon">Amount</div>
+                        <input name="amount" type="number" min="0" max="10000" class="form-control">
                         <div class="input-group-addon">{{item.amount}}</div>
                     </div>
                 </div>
