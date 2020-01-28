@@ -60,7 +60,6 @@ def create_or_edit_ticket(request, pk=None):
                 ticket.author = request.user
                 ticket.payment_status = 'Not Paid'
                 ticket.save()
-                messages.success(request, 'You have to pay')
                 return redirect('ticket_prepayment', pk=ticket.pk)
     else:
         form = TicketForm(instance=ticket)
