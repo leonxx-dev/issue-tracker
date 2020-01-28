@@ -13,7 +13,7 @@ def get_tickets(request):
     of Tickets that were published prior to 'now'
     and render them to the 'tickets.html' template
     """
-    f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date'))
+    f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date').exclude(payment_status='Not Paid'))
         
     return render(request, "tickets.html", {'filter': f})
     
