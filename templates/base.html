@@ -29,9 +29,10 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
+                        <li><a href="{% url 'view_cart' %}">Cart</a></a></li>
+                        <li><a href="{% url 'get_tickets' %}">Tickets</a></li>
                         <li><a href="{% url 'profile' %}">Profile</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
-                        <li><a href="{% url 'view_cart' %}">Cart</a></a></li>
                     {%  else %}
                         <li><a href="{% url 'get_tickets' %}">Tickets</a></li>
                         <li><a href="{% url 'register' %}">Register</a></li>
@@ -65,14 +66,12 @@
             for (var i = 0; i < getLabel.length; i++) {
                 var status = $(getLabel[i]).first().text();
                 var label = getLabel[i];
-                if (status == "New"){
-                    label.classList.add("label", "label-success");
-                }else if (status == "To Do"){
-                    label.classList.add("label", "label-primary");
+                if (status == "Pending"){
+                    label.classList.add("label", "label-default");
                 }else if (status == "In Progress"){
                     label.classList.add("label", "label-warning");
                 }else{
-                    label.classList.add("label", "label-default");
+                    label.classList.add("label", "label-primary");
                 }
             }
         });

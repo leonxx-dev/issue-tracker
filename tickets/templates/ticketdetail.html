@@ -39,7 +39,7 @@
                         </form>
                     </div>
                     <div class="col-xs-9 col-md-3">
-                        <p>{{ ticket.amount }}</p>
+                        <p><small><strong>Votes:</strong> {{ ticket.votes }}</small></p>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <p><small><strong>Updated on:</strong> {{ ticket.update_date }}</small></p>
@@ -51,8 +51,12 @@
             </div>
         </div> 
         <div>
-            <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
-            <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+            {% if ticket.author != request.user %}
+                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+            {% else %}
+                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
+                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+            {% endif %}
         </div>
     </div>
 </div>

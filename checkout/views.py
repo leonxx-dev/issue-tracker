@@ -47,10 +47,15 @@ def checkout(request):
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
                 ticket = get_object_or_404(Ticket, pk=id)
-                ticket.votes += 1
-                ticket.amount += amount
-                ticket.save()
-                Vote.objects.get_or_create(voter=request.user, vote_for=ticket)
+                if ticket.payment_status == 'Not Paid':
+                    ticket.amount += amount
+                    ticket.payment_status = 'Paid'
+                    ticket.save()
+                else:
+                    ticket.votes += 1
+                    ticket.amount += amount
+                    ticket.save()
+                    Vote.objects.get_or_create(voter=request.user, vote_for=ticket)
                 return redirect('ticket_detail', pk=ticket.pk)
             else:
                 messages.error(request, "Unable to take payment")

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Ticket
-from .forms import TicketForm
+from .forms import CreateForm, EditForm
 from .filter import TicketFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -13,7 +13,7 @@ def get_tickets(request):
     of Tickets that were published prior to 'now'
     and render them to the 'tickets.html' template
     """
-    f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date').exclude(payment_status='Not Paid'))
+    f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date'))
         
     return render(request, "tickets.html", {'filter': f})
     
@@ -49,19 +49,12 @@ def create_or_edit_ticket(request, pk=None):
     """
     ticket = get_object_or_404(Ticket, pk=pk) if pk else None
     if request.method == "POST":
-        form = TicketForm(request.POST, instance=ticket)
+        form = CreateForm(request.POST, instance=ticket)
         if form.is_valid():
             ticket = form.save(commit=False)
-            if str(ticket.ticket_type) == "Issue":
-                ticket.author = request.user
-                ticket.save()
-                return redirect(ticket_detail, ticket.pk)
-            else:
-                ticket.author = request.user
-                ticket.payment_status = 'Not Paid'
-                ticket.save()
-                messages.success(request, 'You have to pay')
-                return redirect('ticket_prepayment', pk=ticket.pk)
+            ticket.author = request.user
+            ticket.save()
+            return redirect(ticket_detail, ticket.pk)
     else:
-        form = TicketForm(instance=ticket)
+        form = CrForm(instance=ticket)
     return render(request, 'ticketform.html', {'form': form, 'ticket': ticket})
