@@ -27,7 +27,6 @@ def request_vote(request, pk):
                 messages.success(request, 'You have successfully Provided an Up-Vote for this Request')
                 return redirect('ticket_detail', pk=ticket.pk)
         else:
-            messages.success(request, 'You have to pay')
             return redirect('ticket_prepayment', pk=ticket.pk)
     else:
         messages.error(request, 'Uuups, something went wrong, please try again.')

@@ -45,18 +45,20 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+                cart = request.session.get('cart', {})
+                for id, amount in cart.items():
+                    ticket = get_object_or_404(Ticket, pk=id)
+                    if ticket.payment_status == 'Not Paid':
+                        ticket.amount += amount
+                        ticket.payment_status = 'Paid'
+                        ticket.save()
+                    else:
+                        ticket.votes += 1
+                        ticket.amount += amount
+                        ticket.save()
+                        Vote.objects.get_or_create(voter=request.user, vote_for=ticket)
                 request.session['cart'] = {}
-                ticket = get_object_or_404(Ticket, pk=id)
-                if ticket.payment_status == 'Not Paid':
-                    ticket.amount += amount
-                    ticket.payment_status = 'Paid'
-                    ticket.save()
-                else:
-                    ticket.votes += 1
-                    ticket.amount += amount
-                    ticket.save()
-                    Vote.objects.get_or_create(voter=request.user, vote_for=ticket)
-                return redirect('ticket_detail', pk=ticket.pk)
+                return redirect('get_tickets')
             else:
                 messages.error(request, "Unable to take payment")
         else:

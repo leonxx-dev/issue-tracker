@@ -45,12 +45,19 @@ footer {
     padding: 0.9em 0.9em 0 0.9em;
 }
 
+.input-group {
+    margin-bottom: 1em;
+}
+
 @media only screen and (min-width: 992px) {
     .filter-button {
         margin-top: 1.7em;
     }
     .form-buttons {
         margin-left: 15em;
+    }
+    .prepayment {
+        margin-top: 5em;
     }
 }
 
