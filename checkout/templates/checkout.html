@@ -13,17 +13,27 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    {% for item in cart_items %}
-    <div class="col-xs-12 col-md-8 col-md-offset-2 display panel panel-display">
-        <div class="caption">
-            <h3>Checkout</h3>
-            <p>
-                <strong>Ticket ID:</strong> {{item.ticket.id}}.
-                <strong>Title:</strong> {{item.ticket.title}}
-            </p>
-        </div>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h3>Checkout</h3>    
     </div>
-    {% endfor %}
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <table class="table table-bordered">
+            {% for item in cart_items %}
+            <tr>
+                <td class="text-center"><strong>Ticket ID</strong></td>
+                <td><strong>Title</strong></td>
+                <td class="text-center"><strong>Amount NOK</strong></td>
+            </tr>
+            <tr>
+                <td class="text-center">{{item.ticket.id}}</td>
+                <td>{{item.ticket.title|truncatewords:10}}</td>
+                <td class="text-center">{{item.amount}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
