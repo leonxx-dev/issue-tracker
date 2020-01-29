@@ -17,7 +17,7 @@ def add_to_cart(request, id):
         cart[id] = cart.get(id, amount) 
 
     request.session['cart'] = cart
-    return redirect(reverse('checkout'))
+    return redirect(reverse('get_tickets'))
     
     
 def remove_from_cart(request, id):
