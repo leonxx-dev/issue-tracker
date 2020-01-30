@@ -53,10 +53,10 @@
         </div> 
         <div>
             {% if ticket.author != request.user %}
-                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+                <a href="{% url 'get_tickets' %}" class="btn btn-default btn-sm">Back to Tickets</a>
             {% else %}
-                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info">Edit Ticket</a>
-                <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
+                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-info btn-sm">Edit Ticket</a>
+                <a href="{% url 'get_tickets' %}" class="btn btn-default btn-sm">Back to Tickets</a>
             {% endif %}
         </div>
     </div>
@@ -66,13 +66,13 @@
         <form method="post">
         {% csrf_token %}
         {{ comment_form | as_bootstrap }}
-        <button type="submit" class="btn btn-primary  btn-sm">Submit</button>
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
         </form>    
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <h2>{{ comments.count }} comments</h2>
+        <h5>Comments({{ comments.count }})</h5>
         {% for comment in comments %}
         <div class="thumbnail">
             <div class="caption">
@@ -80,10 +80,10 @@
                 <hr class="break-line">
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <p><span><strong>Author:</strong></span> {{comment.comment_author}}</p>    
+                        <p><span><small><strong>Author:</strong></span> {{comment.comment_author}}</small></p>    
                     </div> 
                     <div class="col-xs-12 col-md-6">
-                        <p><span><strong>Published:</strong></span> {{ comment.published_date }}</p>    
+                        <p><span><small><strong>Published:</strong></span> {{ comment.published_date }}</small></p>    
                     </div>
                 </div>
             </div>

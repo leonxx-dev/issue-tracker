@@ -26,6 +26,7 @@ def ticket_detail(request, pk):
     render it to the 'ticketpayment.html'.
     Or return a 404 error if the ticket is
     not found
+    And allowed users to leave the comments.
     """
     ticket = get_object_or_404(Ticket, pk=pk)
     comments = ticket.comments.all()
