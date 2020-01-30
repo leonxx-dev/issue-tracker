@@ -38,6 +38,7 @@ def ticket_detail(request, pk):
             comment.comment_on = ticket
             comment.comment_author = request.user
             comment.save()
+            return redirect('ticket_detail', pk=ticket.pk)
     else:
         comment_form = CommentForm()
 

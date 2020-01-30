@@ -11,7 +11,7 @@ class Comment(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        ordering = ['published_date']
+        ordering = ['-published_date']
     
     def __str__(self):
         return 'Comment {} by {}'.format(self.text, self.comment_author)
