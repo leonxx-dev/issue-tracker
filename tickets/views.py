@@ -5,6 +5,8 @@ from .forms import TicketForm
 from .filter import TicketFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from comments.forms import CommentForm
+from comments.models import Comment
 
 def get_tickets(request):
     """
@@ -26,7 +28,23 @@ def ticket_detail(request, pk):
     not found
     """
     ticket = get_object_or_404(Ticket, pk=pk)
-    return render(request, "ticketdetail.html", {'ticket': ticket})
+    comments = ticket.comments.all()
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.comment_on = ticket
+            comment.comment_author = request.user
+            comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, "ticketdetail.html", {
+        'ticket': ticket,
+        'comments': comments,
+        'comment_form': comment_form
+    })
     
 def ticket_prepayment(request, pk):
     """

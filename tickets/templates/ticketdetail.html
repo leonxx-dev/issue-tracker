@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -58,6 +59,36 @@
                 <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>
             {% endif %}
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <form method="post">
+        {% csrf_token %}
+        {{ comment_form | as_bootstrap }}
+        <button type="submit" class="btn btn-primary  btn-sm">Submit</button>
+        </form>    
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h2>{{ comments.count }} comments</h2>
+        {% for comment in comments %}
+        <div class="thumbnail">
+            <div class="caption">
+                <p>{{comment.text}}</p>
+                <hr class="break-line">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p><span><strong>Author:</strong></span> {{comment.comment_author}}</p>    
+                    </div> 
+                    <div class="col-xs-12 col-md-6">
+                        <p><span><strong>Published:</strong></span> {{ comment.published_date }}</p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
