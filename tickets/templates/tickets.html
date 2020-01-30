@@ -7,14 +7,14 @@
             <h2>Tickets</h2>
         </div>
         <div class="col-xs-6 col-md-4">
-            <a href="{% url 'new_ticket' %}"  class="btn btn-success button-centre-right">Create Ticket</a>
+            <a href="{% url 'new_ticket' %}"  class="btn btn-primary button-centre-right">Create Ticket</a>
         </div>
     </div>
     <div class="row">
         <form action="" method="get">
             {{ filter.form | as_bootstrap }}
             <div class="col-xs-6 col-md-2">
-                <button type="submit" class="btn btn-default filter-button btn-block">Filter</button>    
+                <button type="submit" class="btn btn-primary filter-button btn-block">Filter</button>    
             </div>
         </form>    
     </div>
@@ -44,7 +44,7 @@
                     </div>
                     <hr class="break-line">
                     <p>{{ ticket.content|truncatewords:30 }}</p>
-                    <p><a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-default">Read more</a></p>
+                    <p><a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-primary btn-sm">Read more</a></p>
                     <hr class="break-line">
                     <div class="row">
                         <div class="col-xs-9 col-md-4">
