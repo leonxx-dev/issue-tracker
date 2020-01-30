@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, HttpResponse, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib import messages
 from .models import Vote
@@ -31,11 +31,4 @@ def request_vote(request, pk):
     else:
         messages.error(request, 'Uuups, something went wrong, please try again.')
         return redirect('ticket_detail', pk=ticket.pk)
-    
 
-def results(request, ticket_id):
-    """
-    View that should show voting results. Out of order by now.
-    """
-    ticket = get_object_or_404(Ticket, pk=ticket_id)
-    return render(request, 'results.html', {'ticket': ticket})
