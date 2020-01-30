@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AuthenticateMe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/superhero/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -67,7 +67,7 @@
                 var status = $(getLabel[i]).first().text();
                 var label = getLabel[i];
                 if (status == "Pending"){
-                    label.classList.add("label", "label-default");
+                    label.classList.add("label", "label-info");
                 }else if (status == "In Progress"){
                     label.classList.add("label", "label-warning");
                 }else{
@@ -82,7 +82,7 @@
                 var type = $(getLabel[i]).first().text();
                 var label = getLabel[i];
                 if (type == "Issue"){
-                    label.classList.add("label", "label-info");
+                    label.classList.add("label", "label-success");
                 }else{
                     label.classList.add("label", "label-danger");
                 }
