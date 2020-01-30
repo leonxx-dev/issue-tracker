@@ -5,8 +5,9 @@ from .forms import TicketForm
 from .filter import TicketFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from comments.forms import CommentForm
+from comments.models import Comment
 
-# Create your views here.
 def get_tickets(request):
     """
     Create a view that will return a list
@@ -25,9 +26,27 @@ def ticket_detail(request, pk):
     render it to the 'ticketpayment.html'.
     Or return a 404 error if the ticket is
     not found
+    And allowed users to leave the comments.
     """
     ticket = get_object_or_404(Ticket, pk=pk)
-    return render(request, "ticketdetail.html", {'ticket': ticket})
+    comments = ticket.comments.all()
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.comment_on = ticket
+            comment.comment_author = request.user
+            comment.save()
+            return redirect('ticket_detail', pk=ticket.pk)
+    else:
+        comment_form = CommentForm()
+
+    return render(request, "ticketdetail.html", {
+        'ticket': ticket,
+        'comments': comments,
+        'comment_form': comment_form
+    })
     
 def ticket_prepayment(request, pk):
     """

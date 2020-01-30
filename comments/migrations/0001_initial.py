@@ -16,15 +16,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Vote',
+            name='Comment',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('published_date', models.DateField(auto_now_add=True, null=True)),
-                ('vote_for', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tickets.Ticket')),
-                ('voter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('comment', models.TextField()),
+                ('published_date', models.DateTimeField(auto_now_add=True)),
+                ('comment_author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('comment_on', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='tickets.Ticket')),
             ],
             options={
-                'unique_together': {('vote_for', 'voter')},
+                'ordering': ['published_date'],
             },
         ),
     ]
