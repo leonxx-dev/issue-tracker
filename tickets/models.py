@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-# Create your models here.
 class TypeName(models.Model):
     """
     Ticket type options will be used as foreign key for ticket

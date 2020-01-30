@@ -6,7 +6,6 @@ from .filter import TicketFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-# Create your views here.
 def get_tickets(request):
     """
     Create a view that will return a list
