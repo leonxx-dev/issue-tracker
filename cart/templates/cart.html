@@ -22,7 +22,9 @@
                     <td class="text-left">{{item.ticket.id}}</td>
                     <td>{{item.ticket.title|truncatewords:10}}</td>
                     <td class="text-center">{{item.amount}}</td>
-                    <td class="text-right"><a href="{% url 'remove_from_cart' item.ticket.id %}" class="btn btn-danger btn-xs">X</a></td>
+                    <td class="text-right">
+                        <a href="{% url 'remove_from_cart' item.ticket.id %}" class="btn btn-danger btn-xs">X</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -34,12 +36,11 @@
         <p class="text-right"><strong>Total</strong></p>
         <p class="text-right"><strong>{{ total }} NOK</strong></p>
         <p class="text-right">
-            <a href="{% url 'checkout' %}" class="btn btn-primary" role="button"><span aria-hidden="true"></span>Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-primary" role="button">
+                <span aria-hidden="true"></span>
+                <i class="fas fa-check-circle"></i> Checkout
+            </a>
         </p>
     </div>
 </div>
 {% endblock %}
-    <span><strong>Ticket ID:</strong> {{item.ticket.id}}</span>
-                <span><strong>Title:</strong> {{item.ticket.title|truncatewords:10}}</span>
-                <span><strong>Amount:</strong> {{item.amount}} NOK</span>
-                <span><a href="{% url 'remove_from_cart' item.ticket.id %}" class="btn btn-danger btn-xs">X</a></span>
