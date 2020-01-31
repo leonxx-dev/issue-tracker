@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container prepayment">
     <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2 display panel panel-default">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 display panel panel-default">
             <div class="panel-body">
                 <p>
                     By creating or upvoting feature tickets you helping us 
@@ -16,8 +16,8 @@
                         <span class="input-group-addon" id="basic-addon2">NOK</span>
                     </div>
                     <div>
-                        <button class="btn btn-success" type="submit">Proceed</button>
-                        <a href="{% url 'get_tickets' %}" class="btn btn-default">Cancel</a>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-default btn-sm"><i class="fas fa-angle-left"></i> Back to Ticket</a>
                     </div>
                 </form>
             </div>

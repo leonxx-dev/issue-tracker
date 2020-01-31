@@ -15,8 +15,8 @@
             {{ form | as_bootstrap }}
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-2 form-buttons">
-                    <button type="submit" class="btn btn-info">Save</button>
-                    <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                    <a href="{% url 'get_tickets' %}" class="btn btn-default"><i class="fas fa-angle-left"></i> Back to Tickets</a>    
                 </div>
             </div>
         </form>
@@ -30,8 +30,8 @@
             {{ form | as_bootstrap }}
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-2 form-buttons">
-                    <button type="submit" class="btn btn-info">Save</button>
-                    <a href="{% url 'get_tickets' %}" class="btn btn-default">Back to Tickets</a>    
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                    <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-default"><i class="fas fa-angle-left"></i> Back to Ticket</a>    
                 </div>
             </div>
         </form>  
