@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from .models import Ticket, TypeName
 from accounts.models import MyUser
-from django.shortcuts import get_object_or_404, reverse
+from django.shortcuts import reverse
 from comments.models import Comment
 
 class TestViews(TestCase):

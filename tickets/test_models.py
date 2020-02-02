@@ -1,27 +1,24 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, Client
 from .models import Ticket, TypeName
 from accounts.models import MyUser
 
 class TestTicketModel(TestCase):
     
     def setUp(self):
-        self.factory = RequestFactory()
-        self.user = MyUser.objects.create_user(
+        self.client = Client()
+        self.user = MyUser.objects.create_user( 
+                                                email='valera@gmail.com',
                                                 username='valera', 
-                                                email='valera@gmail.com', 
                                                 password='password'
                                                 )
-    
+        self.typename = TypeName.objects.create(name='Issue')
+        self.ticket = Ticket.objects.create(
+                                            title='Test',
+                                            author=self.user,
+                                            ticket_type=self.typename
+                                            )
+        
     def test_connection_between_models(self):
-        request = self.factory.get('/customer/details')
-        request.user = self.user
-        ticket_t = TypeName(name='Issue')
-        ticket_t.save()
         
-        ticket = Ticket(title='Test ticket',
-                        ticket_type=ticket_t,
-                        author=request.user)
-        ticket.save()
-        
-        self.assertEqual(ticket.title, 'Test ticket')
-        self.assertEqual(str(ticket.ticket_type), 'Issue')
+        self.assertEqual(self.ticket.title, 'Test')
+        self.assertEqual(str(self.ticket.ticket_type), 'Issue')
