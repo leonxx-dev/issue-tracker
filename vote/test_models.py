@@ -1,35 +1,28 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, Client
 from tickets.models import Ticket, TypeName
 from accounts.models import MyUser
 from .models import Vote
-from django.shortcuts import get_object_or_404
 
 class TestVoteModel(TestCase):
     
     def setUp(self):
-        self.factory = RequestFactory()
+        self.client = Client()
         self.user = MyUser.objects.create_user(
                                                 username='valera', 
                                                 email='valera@gmail.com', 
                                                 password='password'
                                                 )
-    
+        self.typename = TypeName.objects.create(name='Issue')
+        self.ticket = Ticket.objects.create(
+                                            title='Test',
+                                            author=self.user,
+                                            ticket_type=self.typename
+                                            )
+        self.vote = Vote.objects.create(vote_for=self.ticket,
+                                        voter=self.user)
     def test_connection_between_models(self):
-        request = self.factory.get('/customer/details')
-        request.user = self.user
-        
-        ticket_t = TypeName(name='Issue')
-        ticket_t.save()
-        
-        ticket = Ticket(title='Test ticket',
-                        ticket_type=ticket_t,
-                        author=request.user)
-        ticket.save()
-        
-        
-        vote = Vote(vote_for=ticket,
-                    voter=request.user)
-        vote.save()
-        
-        self.assertTrue(vote.vote_for)
-        self.assertTrue(vote.voter)
+
+        self.assertTrue(self.vote.vote_for)
+        self.assertTrue(self.vote.voter)
+        self.assertEqual(self.vote.vote_for, self.ticket)
+        self.assertEqual(self.vote.voter, self.user)
