@@ -14,4 +14,4 @@ class Comment(models.Model):
         ordering = ['-published_date']
     
     def __str__(self):
-        return 'Comment {} by {}'.format(self.text, self.comment_author)
+        return 'Comment {} by {}'.format(self.comment, self.comment_author)
