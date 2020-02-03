@@ -36,10 +36,17 @@
         <p class="text-right"><strong>Total</strong></p>
         <p class="text-right"><strong>{{ total }} NOK</strong></p>
         <p class="text-right">
+            {% if total >= 100 %}
             <a href="{% url 'checkout' %}" class="btn btn-primary" role="button">
                 <span aria-hidden="true"></span>
                 <i class="fas fa-check-circle"></i> Checkout
             </a>
+            {% else %}
+            <a href="{% url 'checkout' %}" class="btn btn-primary disabled" role="button">
+                <span aria-hidden="true"></span>
+                <i class="fas fa-check-circle"></i> Checkout
+            </a>
+            {% endif %}
         </p>
     </div>
 </div>
