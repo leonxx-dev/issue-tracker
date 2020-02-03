@@ -15,7 +15,7 @@ def cart_contents(request):
     for id, amount in cart.items():
         ticket = get_object_or_404(Ticket, pk=id)
         total += amount
-        ticket_count += amount
         cart_items.append({'id': id, 'amount': amount, 'ticket': ticket})
+        ticket_count = len(cart_items)
     
     return {'cart_items': cart_items, 'total': total, 'ticket_count': ticket_count}
