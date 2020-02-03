@@ -34,11 +34,16 @@ def ticket_detail(request, pk):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.comment_on = ticket
-            comment.comment_author = request.user
-            comment.save()
-            return redirect('ticket_detail', pk=ticket.pk)
+            if request.user.is_authenticated:
+                comment = comment_form.save(commit=False)
+                comment.comment_on = ticket
+                comment.comment_author = request.user
+                comment.save()
+                return redirect('ticket_detail', pk=ticket.pk)
+            else:
+                messages.success(request, 
+                                "You have to be logged in to leave a comments.")
+                return redirect('login')
     else:
         comment_form = CommentForm()
 
