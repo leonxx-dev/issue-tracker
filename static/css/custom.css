@@ -25,6 +25,18 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+/*home page*/
+
+#bodyId {
+    background-image: url('https://i.imgur.com/LeiHaP4.jpg');
+    background-image: url(https://i.imgur.com/LeiHaP4.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.jumbotron {
+    background-color: rgb(78,93,108, 0.5);    
+}
 
 /*ticket pages*/
 .button-centre-right {
@@ -85,6 +97,7 @@ footer {
         margin-left: 1.1em;
     }
 }
+
 
 
 
