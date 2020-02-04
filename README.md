@@ -1,5 +1,5 @@
-<h1>Issue Tracker</h1>
 [![Build Status](https://travis-ci.org/Leon2ev/issue-tracker.svg?branch=master)](https://travis-ci.org/Leon2ev/issue-tracker)
+<h1>Issue Tracker</h1>
 <p>
     Any good project should have a system that can connect users with developers
     and opposite. Users can easily report about issues that they found or ask to 
