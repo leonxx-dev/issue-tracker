@@ -64,8 +64,8 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, 'prepayment.html')
 
-#    def test_ticket_comment(self):
-#        response = self.client.post(self.detail_url, {'comment': 'Test',})
-#        self.assertEqual(response.status_code, 200)
+    def test_ticket_comment(self):
+        response = self.client.post(self.detail_url, {'comment': 'Test'})
+        self.assertEqual(response.status_code, 302)
     
         

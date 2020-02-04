@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from comments.forms import CommentForm
 from comments.models import Comment
+from django.core.paginator import Paginator
 
 def get_tickets(request):
     """
