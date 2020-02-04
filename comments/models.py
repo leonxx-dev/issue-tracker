@@ -8,12 +8,12 @@ class Comment(models.Model):
     comment_on = models.ForeignKey( 
                                     Ticket, 
                                     on_delete=models.CASCADE, 
-                                    related_name='comments'
+                                    related_name='ticket'
                                     )
     comment_author = models.ForeignKey( 
                                         settings.AUTH_USER_MODEL, 
                                         on_delete=models.CASCADE, 
-                                        related_name='comments'
+                                        related_name='author'
                                         )
     comment = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)

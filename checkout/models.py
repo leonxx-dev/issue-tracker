@@ -1,8 +1,12 @@
 from django.db import models
 from tickets.models import Ticket
+from django.conf import settings
 
 # Create your models here.
 class Order(models.Model):
+    username = models.ForeignKey(   settings.AUTH_USER_MODEL, 
+                                    on_delete=models.CASCADE, 
+                                    related_name='order')
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
