@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/Leon2ev/issue-tracker.svg?branch=master)](https://travis-ci.org/Leon2ev/issue-tracker)
 <h1>Issue Tracker</h1>
+[![Build Status](https://travis-ci.org/Leon2ev/issue-tracker.svg?branch=master)](https://travis-ci.org/Leon2ev/issue-tracker)
 <p>
     Any good project should have a system that can connect users with developers
     and opposite. Users can easily report about issues that they found or ask to 
@@ -353,6 +353,7 @@
         </ul>
     </li>
     <li>Create file with dependencies. pip freeze > requirements.txt</li>
+    <li>env_sample.py file with all environ variables needed to run project</li>
     <li>Create Profile. web: gunicorn issuetracker.wsgi:application</li>
     <li>Create git repository. Git init, git add.</li>
     <li>Log in to heroku. heroku login -i</li>
