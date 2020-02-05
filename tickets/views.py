@@ -16,8 +16,13 @@ def get_tickets(request):
     and render them to the 'tickets.html' template
     """
     f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date').exclude(payment_status='Not Paid'))
+    paginator = Paginator(f.qs, 20)
     
-    return render(request, "tickets.html", {'filter': f})
+    page = request.GET.get('page')
+    page_obj = paginator.get_page(page)
+    return render(request, 'tickets.html', {'filter': f, 'page_obj': page_obj})
+    
+    # return render(request, "tickets.html", {'filter': f})
    
 def ticket_detail(request, pk):
     """

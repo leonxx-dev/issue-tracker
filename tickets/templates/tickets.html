@@ -21,7 +21,7 @@
 </div>    
 <div class="container">
     <div class="row">
-        {% for ticket in filter.qs %}
+        {% for ticket in page_obj %}
         <div class="col-xs-12 col-md-8 col-md-offset-2">
             <div class="thumbnail">
                 <div class="caption">
@@ -68,6 +68,37 @@
             </div>
         </div>
         {% endfor %}
-    </div>    
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a href="?page=1">&laquo; First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">
+                        Previous
+                    </a>
+                </li>
+                {% endif %}
+                
+                <li class="page-item active">
+                    <a class="page-link" href="#">Page {{ page_obj.number }} 
+                        of {{ page_obj.paginator.num_pages }}
+                    </a>
+                </li>
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a href="?page={{ page_obj.next_page_number }}">
+                        Next
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">
+                        Last &raquo;
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}
