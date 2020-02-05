@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Leon2ev/issue-tracker.svg?branch=master)](https://travis-ci.org/Leon2ev/issue-tracker)
-<h1>Issue Tracker</h1>
+<h1><a href="https://jevgeni-issue-tracker.herokuapp.com/">
+    Issue Tracker on Heroku
+</a></h1>
 <p>
     Any good project should have a system that can connect users with developers
     and opposite. Users can easily report about issues that they found or ask to 
@@ -340,7 +342,7 @@
     At the moment couldn't implement pagination because conflict with 
     django-filter. Didn't found any information how to fix it.
 </p>
-<h2>Deployment</h2>
+<h2>Deployment to Heroku</h2>
 <ol>
     <li>Log in to Heroku</li>
     <li>Create new app. Select App name and server region.</li>
@@ -365,8 +367,13 @@
     <li>Log in to heroku. heroku login -i</li>
     <li>Connect to heroku repository. heroku git:remote -a {your-project-name}</li>
     <li>Push to heroku. git push heroku master</li>
+</ol>
+<h2>Run locally</h2>
+<ol>
+    <li>Create virtual evniroment</li>
+    <li>pip install -r requiremnt.txt</li>
     <li>
-        <a href="https://jevgeni-issue-tracker.herokuapp.com/">Issue Tracker</a>
+        Check env_sample.py file with all environ variables needed to run project
     </li>
 </ol>
 <h2>Credits</h2>
