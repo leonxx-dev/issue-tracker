@@ -59,6 +59,7 @@
     </li>
 </ul>
 <a href="https://balsamiq.cloud/s4y4k8d/pflz15h/r69ED">Wireframe</a>
+<a href="https://dbdesigner.page.link/NC6SXJAb8SXv5cUW8">Database schema</a>
 <h2>Features</h2>
 <h3>Existing Features</h3>
 <ul>
