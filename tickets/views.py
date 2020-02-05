@@ -36,6 +36,7 @@ def ticket_detail(request, pk):
     """
     ticket = get_object_or_404(Ticket, pk=pk)
     comments = ticket.comments.all()
+    paginator = Paginator(comments, 25)
     
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
@@ -53,10 +54,14 @@ def ticket_detail(request, pk):
     else:
         comment_form = CommentForm()
 
+    
+    page = request.GET.get('page')
+    page_obj = paginator.get_page(page)
     return render(request, "ticketdetail.html", {
         'ticket': ticket,
         'comments': comments,
-        'comment_form': comment_form
+        'comment_form': comment_form,
+        'page_obj': page_obj,
     })
 
 @login_required()    
