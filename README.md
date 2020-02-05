@@ -334,6 +334,10 @@
     </li>
 </ul>
 <h3>Bugs</h3>
+<p>
+    At the moment couldn't implement pagination because conflict with 
+    django-filter. Didn't found any information how to fix it.
+</p>
 <h2>Deployment</h2>
 <ol>
     <li>Log in to Heroku</li>
@@ -365,3 +369,5 @@
 </ol>
 <h2>Credits</h2>
 <h3>Media</h3>
+<a href="http://adwallpapers.xyz/146894-albion-online-4k-ultra-hd-wallpaper.html">
+Background image</a>
