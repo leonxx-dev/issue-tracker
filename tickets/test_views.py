@@ -23,7 +23,7 @@ class TestViews(TestCase):
         self.detail_url = reverse('ticket_detail', args=[self.ticket.id])
         self.newticket_url = reverse('new_ticket')
         self.editticket_url = reverse('edit_ticket', args=[self.ticket.id])
-        self.prepayment_url =reverse('ticket_prepayment', args=[self.ticket.id])
+        self.prepayment_url = reverse('ticket_prepayment', args=[self.ticket.id])
         
         
         
@@ -60,14 +60,24 @@ class TestViews(TestCase):
             self.assertEqual(page.status_code, 302)
             
     def test_get_prepayment_page(self):
-        page = self.client.get(self.prepayment_url)
-        self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, 'prepayment.html')
+        logged_in = self.client.login(username='testuser', password='12345')
+        if logged_in:
+            page = self.client.get(self.prepayment_url)
+            self.assertEqual(page.status_code, 200)
+            self.assertTemplateUsed(page, 'prepayment.html')
+        
+        else:
+            page = self.client.get(self.prepayment_url)
+            self.assertEqual(page.status_code, 302)
 
     def test_ticket_comment(self):
-        response = self.client.post(self.detail_url, {'comment': 'Test'})
-        import pdb; pdb.set_trace()
-        self.assertEqual(response.status_code, 302)
+        logged_in = self.client.login(username='testuser', password='12345')
+        if logged_in:  
+            response = self.client.post(self.detail_url, {'comment': 'Test'})
+            self.assertEqual(response.status_code, 200)
+        else:
+            response = self.client.post(self.detail_url, {'comment': 'Test'})
+            self.assertEqual(response.status_code, 302)
         
     
         
