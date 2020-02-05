@@ -53,7 +53,8 @@ def ticket_detail(request, pk):
         'comments': comments,
         'comment_form': comment_form
     })
-    
+
+@login_required()    
 def ticket_prepayment(request, pk):
     """
     Create a view that returns a single
