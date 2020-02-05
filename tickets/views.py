@@ -16,7 +16,7 @@ def get_tickets(request):
     and render them to the 'tickets.html' template
     """
     f = TicketFilter(request.GET, queryset=Ticket.objects.all().order_by('-published_date').exclude(payment_status='Not Paid'))
-        
+    
     return render(request, "tickets.html", {'filter': f})
    
 def ticket_detail(request, pk):

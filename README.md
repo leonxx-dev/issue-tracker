@@ -231,7 +231,7 @@
 </p>
 <ul>
     <li>
-        $ coverage run manage.py test    
+        $python manage.py test      
     </li>
 </ul>
 <p>
@@ -239,6 +239,7 @@
 </p>
 <ul>
     <li>
+        $ coverage run manage.py test  
         $ coverage html   
     </li>
 </ul>

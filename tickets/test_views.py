@@ -3,6 +3,7 @@ from .models import Ticket, TypeName
 from accounts.models import MyUser
 from django.shortcuts import reverse
 from comments.models import Comment
+from django.shortcuts import get_object_or_404
 
 class TestViews(TestCase):
     
@@ -74,10 +75,11 @@ class TestViews(TestCase):
         logged_in = self.client.login(username='testuser', password='12345')
         if logged_in:  
             response = self.client.post(self.detail_url, {'comment': 'Test'})
-            self.assertEqual(response.status_code, 200)
+            self.assertRedirects(response.status_code, 302) 
         else:
             response = self.client.post(self.detail_url, {'comment': 'Test'})
             self.assertEqual(response.status_code, 302)
+        
         
     
         
