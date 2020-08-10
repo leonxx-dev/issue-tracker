@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container prepayment">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 display panel panel-default">
+            <div class="panel-body">
+                <p>
+                    By creating or upvoting feature tickets you helping us 
+                    to develop our project and see user needs.
+                    Insert amount that you able to pay below (minimum 100 NOK)
+                </p>
+                <form method="post" action="{% url 'add_to_cart' ticket.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="amount" type="number" min="100" max="10000" class="form-control" placeholder="Amount">
+                        <span class="input-group-addon" id="basic-addon2">NOK</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-default btn-sm"><i class="fas fa-angle-left"></i> Back to Ticket</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

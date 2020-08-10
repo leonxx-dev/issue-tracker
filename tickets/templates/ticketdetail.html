@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2">
+            <h1>Ticket Detail</h1>
+        </div>
+    </div>
+</div>   
+<div class="row ticket-detail">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="thumbnail">
+            <div class="caption">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="ticket-title">{{ ticket.title }}</h3>    
+                    </div>
+                </div>
+                <hr class="break-line">
+                <div class="row">
+                    <div class="col-xs-6">
+                        {% if ticket.amount <= 99 %}
+                        <p class="dates-vertical-center"><strong>Author:</strong> {{ ticket.author }} </p>
+                        {% else %}
+                        <p class="dates-vertical-center"><strong>Author:</strong> {{ ticket.author }} </p>
+                        <p class="dates-vertical-center"><strong>Amount:</strong> {{ ticket.amount }} NOK</p>
+                        {% endif %}
+                    </div> 
+                    <div class="col-xs-6">
+                        <p class="text-right dates-vertical-center">
+                            <span class="type-color">{{ticket.ticket_type}}</span>
+                            <span class="status-color">{{ticket.status}}</span>
+                        </p>
+                    </div>
+                </div>
+                <hr class="break-line">
+                <p>{{ ticket.content }}</p>
+                <hr class="break-line">
+                <div class="row">
+                    <div class="col-xs-3 col-md-2">
+                        <form action="{% url 'request_vote' ticket.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" value="Vote" class="btn btn-primary btn-xs"><i class="fas fa-thumbs-up"></i> UpVote</button>
+                        </form>
+                    </div>
+                    <div class="col-xs-9 col-md-2">
+                        <p><small><strong>Votes:</strong> {{ ticket.votes }}</small></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p><small><strong>Updated on:</strong> {{ ticket.update_date }}</small></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p><small><strong>Published on:</strong> {{ ticket.published_date }}</small></p>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div>
+            {% if ticket.author != request.user %}
+                <a href="{% url 'get_tickets' %}" class="btn btn-default btn-sm">Back to Tickets</a>
+            {% else %}
+                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit Ticket</a>
+                <a href="{% url 'get_tickets' %}" class="btn btn-default btn-sm"><i class="fas fa-angle-left"></i> Back to Tickets</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <form method="post">
+        {% csrf_token %}
+        {{ comment_form | as_bootstrap }}
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Submit</button>
+        </form>    
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h5>Comments({{ comments.count }})</h5>
+        {% for comment in page_obj %}
+        <div class="thumbnail">
+            <div class="caption">
+                <p>{{comment.comment}}</p>
+                <hr class="break-line">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p><span><small><strong>Author:</strong></span> {{comment.comment_author}}</small></p>    
+                    </div> 
+                    <div class="col-xs-12 col-md-6">
+                        <p><span><small><strong>Published:</strong></span> {{ comment.published_date }}</small></p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    Previous
+                </a>
+            </li>
+            {% endif %}
+            
+            <li class="page-item active">
+                <a class="page-link" href="#">Page {{ page_obj.number }} 
+                    of {{ page_obj.paginator.num_pages }}
+                </a>
+            </li>
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}">
+                    Next
+                </a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">
+                    Last &raquo;
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

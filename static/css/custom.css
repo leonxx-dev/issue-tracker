@@ -1,0 +1,102 @@
+body {
+    font-family: Arial;
+    padding-top: 50px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+}
+
+.icon-bar {
+    background-color: #fff;
+}
+
+.accountform {
+    padding-top: 20px;
+}
+/*home page*/
+
+#bodyId {
+    background-image: url('https://i.imgur.com/LeiHaP4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.jumbotron {
+    background-color: rgb(78,93,108, 0.5);    
+}
+
+/*ticket pages*/
+.button-centre-right {
+    margin-top: 1.5em;
+    float: right;
+}
+
+.dates-vertical-center {
+    margin: 0;
+}
+
+.ticket-title {
+    margin: 0;
+}
+
+.break-line {
+    margin:0.5em;
+}
+
+.thumbnail {
+    padding: 0.4em 0.4em 0 0.4em;
+}
+
+.thumbnail .caption {
+    padding: 0.9em 0.9em 0 0.9em;
+}
+
+.input-group {
+    margin-bottom: 1em;
+}
+
+#id_comment {
+    height: 5em;
+}
+
+#div_id_comment {
+    margin: 1em 0;
+}
+
+@media only screen and (min-width: 992px) {
+    .filter-button {
+        margin-top: 1.7em;
+    }
+    .form-buttons {
+        margin-left: 15em;
+        padding-left: 0;
+    }
+    .prepayment {
+        margin-top: 5em;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .filter-button {
+        margin-top: 1.7em;;
+    }
+    .form-buttons {
+        margin-left: 1.1em;
+    }
+}
+
+
+
+
